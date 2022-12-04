@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System;
+using System.Collections;
 
 namespace DemoMovie.UnitTest
 {
@@ -7,15 +8,48 @@ namespace DemoMovie.UnitTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            GetNowPlayingMovie();
+
         }
 
-        private static void LoadHTML()
+
+        static void GetNowPlayingMovie()
         {
-            var documentHtml = new HtmlWeb().Load("https://www.themoviedb.org/movie/now-playing");
-            //documentHtml.LoadHtml();
+            var linkName = "https://www.themoviedb.org/movie/now-playing";
+            var nodeName = "//h2/a[contains(@href,'/movie/')]";
+
+            var playingMovieList = GetMovie(linkName, nodeName);
+
+            for (int i = 0; i < playingMovieList.Count; i++)
+            {
+                Console.WriteLine(playingMovieList[i]);
+            }
+
         }
 
+
+
+        /// <summary>
+        /// Verilecek link için node/nodları getirecek olan method
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="categoryName"></param>
+        /// <param name="nodeDescription"></param>
+        private static ArrayList GetMovie(string link, string nodeDescription)
+        {
+            var document = new HtmlWeb().Load(link);
+            var movieTitles = document.DocumentNode.SelectNodes(nodeDescription);
+            ArrayList arrayList = new ArrayList();
+            foreach (var movieTitleItem in movieTitles)
+            {
+                //Console.WriteLine(movieTitleItem.InnerText);
+                arrayList.Add(movieTitleItem.InnerText);
+
+            }
+
+            return arrayList;
+        }
 
         private static void ComingWebTag()
         {
@@ -31,7 +65,11 @@ namespace DemoMovie.UnitTest
             //Console.WriteLine(title.InnerText);
 
             var movieTitle1 = document.DocumentNode.SelectSingleNode("//a[contains(@class,'image')]");
+            var movieRelaseDate = document.DocumentNode.SelectNodes("//*[@id='page_1']/div[1]/div[2]/p");
+
+
             Console.WriteLine("----");
+
             if (movieTitle1 != null)
             {
                 Console.WriteLine(movieTitle1.InnerText);
@@ -40,7 +78,7 @@ namespace DemoMovie.UnitTest
 
 
             var movieTitles = document.DocumentNode.SelectNodes("//h2/a[contains(@href,'/movie/')]");
-            var x = document.DocumentNode.ChildAttributes("a");
+            var deger = document.DocumentNode.ChildAttributes("a");
 
             foreach (var item in movieTitles)
             {
@@ -51,5 +89,8 @@ namespace DemoMovie.UnitTest
 
 
         }
+
+
+
     }
 }
