@@ -11,8 +11,10 @@ namespace DemoMovie.Repository.Configurations
             builder.HasKey(k => k.Id);
             builder.Property(k => k.Id).UseIdentityColumn();
             builder.Property(k => k.Comment).IsRequired().HasMaxLength(6000);
+            //builder.Property(k => k.Comment).IsRequired().HasColumnType("nvarchar(max)");
 
             builder.ToTable("MovieComment");
+
         }
     }
 }

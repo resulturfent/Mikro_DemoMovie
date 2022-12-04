@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemoMovie.Core.DTO
 {
-    public class MovieScoreDTO:BaseDTO
+    public class MovieOfferDTO:BaseDTO
     {
         public byte Score { get; set; }//filme verilecek puan
         public byte AverageScore { get; set; }//filmin puan ortalaması

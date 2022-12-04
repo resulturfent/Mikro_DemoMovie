@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DemoMovie.Core.DTO
 {
-    public class MovieScoreDTO:BaseDTO
+    public class MovieRateDTO : BaseDTO
     {
-        public byte Score { get; set; }//filme verilecek puan
-        public byte AverageScore { get; set; }//filmin puan ortalaması
+        public string Comment { get; set; }
+        public byte Score { get; set; }
         public int UserId { get; set; }
         public int MoviesId { get; set; }
 
