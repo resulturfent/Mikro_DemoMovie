@@ -18,6 +18,8 @@ namespace DemoMovie.Repository
         public DbSet<Movies> Movie { get; set; }
         public DbSet<MovieScore> MovieScore { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<MovieOffer> MovieOffer { get; set; }
+        public DbSet<MovieRate> MovieRate { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
