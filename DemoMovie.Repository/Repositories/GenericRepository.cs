@@ -60,6 +60,11 @@ namespace DemoMovie.Repository.Repositories
         {
             return _dbSet.Where(expression);
         }
+
+        public Task<IEnumerable<T>> GetAllAsync(int numberOfData)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -7,6 +7,7 @@ namespace DemoMovie.Core.Services
         //Dönüş tiplerinde IRepository den farklı olacak
         Task<T> GetByIdAsync(int Id);
         Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(int numberOfData);
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task<T> AddAsync(T entity);

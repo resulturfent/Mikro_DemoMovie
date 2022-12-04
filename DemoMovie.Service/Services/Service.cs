@@ -47,6 +47,11 @@ namespace DemoMovie.Service.Services
             return await _repository.GetAll().ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync(int numberOfData)
+        {
+            return await _repository.GetAll().Take(numberOfData).ToListAsync();
+        }
+
         public async Task<T> GetByIdAsync(int Id)
         {
             return await _repository.GetByIdAsync(Id);
