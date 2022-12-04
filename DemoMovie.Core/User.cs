@@ -15,6 +15,7 @@ namespace DemoMovie.Core
         public ICollection<MovieScore> MovieScores { get; set; }
         public ICollection<MovieComment> MovieComment { get; set; }
         public ICollection<MovieRate> MovieRate { get; set; }
+        public ICollection<MovieOffer> MovieOffer { get; set; }
 
 
     }
