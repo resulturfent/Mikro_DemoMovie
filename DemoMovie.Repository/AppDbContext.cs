@@ -25,7 +25,7 @@ namespace DemoMovie.Repository
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());//IEntityTypeConfiguration ın kalıtım verdiği bütün classlara uygular bu da bütün tablolar için configuration işlemleri yapar anlamına gelmektedir.
 
 
-            modelBuilder.ApplyConfiguration(new MovieConfiguration());//her bir oluşturulan tablo configuration için de bu şekilde bir yükleme yapılabilir ama çok fazla tablo olduğunu düşünürsek bu işlem çok fazla zahmetli olacaktır
+            //modelBuilder.ApplyConfiguration(new MovieConfiguration());//her bir oluşturulan tablo configuration için de bu şekilde bir yükleme yapılabilir ama çok fazla tablo olduğunu düşünürsek bu işlem çok fazla zahmetli olacaktır
 
             //modelBuilder.ApplyConfiguration(new MovieCategoryConfiguration());
             //modelBuilder.ApplyConfiguration(new MovieCommentConfiguration());
