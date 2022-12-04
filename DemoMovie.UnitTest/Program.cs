@@ -10,7 +10,10 @@ namespace DemoMovie.UnitTest
         {
 
             GetNowPlayingMovie();
+            GetUpcomingMovie();
+            GetTopRatedMovie();
 
+            Console.ReadLine();
         }
 
 
@@ -20,10 +23,41 @@ namespace DemoMovie.UnitTest
             var nodeName = "//h2/a[contains(@href,'/movie/')]";
 
             var playingMovieList = GetMovie(linkName, nodeName);
-
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("Playing Movie List");
             for (int i = 0; i < playingMovieList.Count; i++)
             {
-                Console.WriteLine(playingMovieList[i]);
+                Console.WriteLine(i + 1 + "-" + playingMovieList[i]);
+            }
+
+        }
+
+        static void GetUpcomingMovie()
+        {
+            var linkName = "https://www.themoviedb.org/movie/upcoming";
+            var nodeName = "//h2/a[contains(@href,'/movie/')]";
+
+            var upcomingMovieList = GetMovie(linkName, nodeName);
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("Upcoming Movie List");
+            for (int i = 0; i < upcomingMovieList.Count; i++)
+            {
+                Console.WriteLine(i + 1 + "-" + upcomingMovieList[i]);
+            }
+
+        }
+
+        static void GetTopRatedMovie()
+        {
+            var linkName = "https://www.themoviedb.org/movie/top-rated";
+            var nodeName = "//h2/a[contains(@href,'/movie/')]";
+
+            var topDatedMovieList = GetMovie(linkName, nodeName);
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("Top Rated Movie List");
+            for (int i = 0; i < topDatedMovieList.Count; i++)
+            {
+                Console.WriteLine(i+1+"-"+topDatedMovieList[i]);
             }
 
         }
