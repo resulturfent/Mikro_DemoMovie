@@ -10,7 +10,6 @@ namespace DemoMovie.Core.DTO
     {
         public byte Score { get; set; }//filme verlecek puan
         public byte AverageScore { get; set; }//filmin puan oetalaması
-
         public int UserId { get; set; }
         public int MoviesId { get; set; }
 
