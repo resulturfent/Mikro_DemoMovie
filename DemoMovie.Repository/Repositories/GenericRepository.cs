@@ -22,7 +22,7 @@ namespace DemoMovie.Repository.Repositories
 
         public async Task AddRangeAsync(IEnumerable<T> entities)
         {
-            await _dbSet.AddRangeAsync(entities);
+              await _dbSet.AddRangeAsync(entities);
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
@@ -35,7 +35,7 @@ namespace DemoMovie.Repository.Repositories
             _dbSet.Remove(entity);
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> expression)
+        public IQueryable<T> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable();
         }
