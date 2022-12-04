@@ -23,12 +23,14 @@ namespace DemoMovie.API.Controllers
 
 
         /// <summary>
-        /// Bu method filme yorum ve puan eklemek için kullanılır
+        ///Bu method filme yorum ve puan eklemek için kullanılır
         /// </summary>
         /// <param name="movieId"></param>
+        /// <param name="movieNote"></param>
+        /// <param name="yourScore"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> AddMovieComment(int movieId)
+        public async Task<IActionResult> AddMovieCommentScore(int movieId,string yourNote,byte yourScore)
         {
             var getMovies = await _service.GetAllAsync();
 
