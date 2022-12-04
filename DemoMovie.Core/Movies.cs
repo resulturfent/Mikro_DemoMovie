@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemoMovie.Core
 {
-    public  class Movies :BaseEntity
+    public class Movies : BaseEntity
     {
         public string MovieName { get; set; }
         public decimal AverageScore { get; set; }
@@ -15,7 +15,10 @@ namespace DemoMovie.Core
 
         public MovieCategory MovieCategory { get; set; }
         public ICollection<MovieComment> MovieComment { get; set; }
-        public ICollection<MovieScore> MovieScore{ get; set; }
+        public ICollection<MovieScore> MovieScore { get; set; }
+        public ICollection<MovieRate> MovieRate { get; set; }
+
+
 
     }
 }

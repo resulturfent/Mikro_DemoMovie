@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemoMovie.Core
 {
-    public class MovieRate
+    public class MovieRate:BaseEntity
     {
         public string Comment { get; set; }
         public byte Score { get; set; }
