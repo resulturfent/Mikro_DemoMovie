@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.ServiceProcess;
 using MovieDemo.GetMovieService.Model;
-
+using System.Diagnostics;
+using System.Threading;
+using System.Linq;
 
 namespace MovieDemo.GetMovieService
 {
@@ -11,15 +13,25 @@ namespace MovieDemo.GetMovieService
     {
 
         private System.Timers.Timer timer;
-        DemoMovie_DBEntities db = new DemoMovie_DBEntities()
-;
+        DemoMovie_DBEntities db = new DemoMovie_DBEntities();
+        Thread _th;
+
         public Service1()
         {
             InitializeComponent();
         }
 
+        public void Debug()
+        {
+            OnStart(null);
+        }
+
         protected override void OnStart(string[] args)
         {
+            Debugger.Launch();
+            _th = new Thread(GetNowPlayingMovie);
+            _th.Start();
+
             timer = new System.Timers.Timer();
             timer.Interval = (60000);
             timer.AutoReset = true;
@@ -49,7 +61,7 @@ namespace MovieDemo.GetMovieService
         {
             try
             {
-                var getMovie = db.Movie.Find(movieName);
+                var getMovie = db.Movie.FirstOrDefault(k=>k.MovieName== movieName);
 
                 if (getMovie == null)
                 {
@@ -79,7 +91,7 @@ namespace MovieDemo.GetMovieService
         {
             try
             {
-                var getMovieCategory = db.Movie.Find(movieCategoryName);
+                var getMovieCategory = db.MovieCategory.FirstOrDefault(k=>k.CategoryName== movieCategoryName);
 
                 if (getMovieCategory == null)
                 {
