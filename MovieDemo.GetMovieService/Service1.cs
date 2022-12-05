@@ -19,11 +19,12 @@ namespace MovieDemo.GetMovieService
 
         protected override void OnStart(string[] args)
         {
+            //start
         }
 
         protected override void OnStop()
         {
-
+            //end
 
         }
     }
