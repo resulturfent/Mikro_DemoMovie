@@ -96,6 +96,8 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MovieCategoryEnum.cs" />
+    <Compile Include="ResponseType.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>

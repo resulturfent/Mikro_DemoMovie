@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.ServiceProcess;
+using MovieDemo.GetMovieService.Model;
 
 
 namespace MovieDemo.GetMovieService
@@ -10,6 +11,8 @@ namespace MovieDemo.GetMovieService
     {
 
         private System.Timers.Timer timer;
+        DemoMovie_DBEntities db = new DemoMovie_DBEntities()
+;
         public Service1()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace MovieDemo.GetMovieService
             timer.Start();
             timer.Elapsed += new System.Timers.ElapsedEventHandler(DemoMovieService);
 
-            Console.WriteLine("--");
+            Console.WriteLine("-------------");
             Console.ReadLine();
         }
 
@@ -42,7 +45,66 @@ namespace MovieDemo.GetMovieService
 
         }
 
-        static void GetNowPlayingMovie()
+        private int AddMovie(string movieName, int movieCategoryId)
+        {
+            try
+            {
+                var getMovie = db.Movie.Find(movieName);
+
+                if (getMovie == null)
+                {
+
+                    Movie movie = new Movie();
+                    movie.MovieName = movieName;
+                    movie.MovieCategoryId = movieCategoryId;
+                    movie.AverageScore = 0;
+                    movie.CreateDate = DateTime.Now;
+                    db.Movie.Add(movie);
+
+                    if (db.SaveChanges() > 0)
+                    {
+                        return ResponseType.DataEkendi.GetHashCode();
+                    }
+                    return ResponseType.EklenirkenHata.GetHashCode();
+                }
+                return ResponseType.DataMevcut.GetHashCode();
+            }
+            catch (Exception)
+            {
+                return ResponseType.VeriEklerkenHataVerdi.GetHashCode();
+            }
+        }
+
+        private int AddMovieCategory( string movieCategoryName)
+        {
+            try
+            {
+                var getMovieCategory = db.Movie.Find(movieCategoryName);
+
+                if (getMovieCategory == null)
+                {
+                    MovieCategory movieCategory = new MovieCategory();
+                    movieCategory.CategoryName = movieCategoryName;
+                    movieCategory.CreateDate = DateTime.Now;
+                    db.MovieCategory.Add(movieCategory);
+
+                    if (db.SaveChanges() > 0)
+                    {
+                        return ResponseType.DataEkendi.GetHashCode();
+                    }
+                    return ResponseType.EklenirkenHata.GetHashCode();
+                }
+                return ResponseType.DataMevcut.GetHashCode();
+            }
+            catch (Exception)
+            {
+                return ResponseType.VeriEklerkenHataVerdi.GetHashCode();
+            }
+        }
+
+
+
+        void GetNowPlayingMovie()
         {
             try
             {
@@ -52,20 +114,24 @@ namespace MovieDemo.GetMovieService
                 var playingMovieList = GetMovie(linkName, nodeName);
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Playing Movie List");
+
+                AddMovieCategory(MovieCategoryEnum.NowPlaying.ToString());
+
                 for (int i = 0; i < playingMovieList.Count; i++)
                 {
-                    Console.WriteLine(i + 1 + "-" + playingMovieList[i]);
+                    //Console.WriteLine(i + 1 + "-" + playingMovieList[i]);
+                    AddMovie(playingMovieList[i].ToString(), MovieCategoryEnum.NowPlaying.GetHashCode());
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                ResponseType.KontrolEdinizHataOlustu.GetHashCode();
             }
 
         }
 
-        static void GetUpcomingMovie()
+        void GetUpcomingMovie()
         {
             try
             {
@@ -75,20 +141,25 @@ namespace MovieDemo.GetMovieService
                 var upcomingMovieList = GetMovie(linkName, nodeName);
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Upcoming Movie List");
+                AddMovieCategory(MovieCategoryEnum.Upcoming.ToString());
+
+
                 for (int i = 0; i < upcomingMovieList.Count; i++)
                 {
-                    Console.WriteLine(i + 1 + "-" + upcomingMovieList[i]);
+                   // Console.WriteLine(i + 1 + "-" + upcomingMovieList[i]);
+                    AddMovie(upcomingMovieList[i].ToString(), MovieCategoryEnum.Upcoming.GetHashCode());
+
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                ResponseType.KontrolEdinizHataOlustu.GetHashCode();
             }
 
         }
 
-        static void GetTopRatedMovie()
+        void GetTopRatedMovie()
         {
             try
             {
@@ -98,9 +169,15 @@ namespace MovieDemo.GetMovieService
                 var topDatedMovieList = GetMovie(linkName, nodeName);
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Top Rated Movie List");
+
+                AddMovieCategory(MovieCategoryEnum.TopRated.ToString());
+
+
                 for (int i = 0; i < topDatedMovieList.Count; i++)
                 {
                     Console.WriteLine(i + 1 + "-" + topDatedMovieList[i]);
+                    AddMovie(topDatedMovieList[i].ToString(), MovieCategoryEnum.TopRated.GetHashCode());
+
                 }
             }
             catch (Exception)
