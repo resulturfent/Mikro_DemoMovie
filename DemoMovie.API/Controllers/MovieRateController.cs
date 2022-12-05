@@ -30,10 +30,12 @@ namespace DemoMovie.API.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> AddMovieRate(MovieRate movieRate)
+        //public async Task<IActionResult> AddMovieRate(string userName,int score,int movieId,int userId,string comment)
+        public async Task<IActionResult> AddMovieRate(MovieRateDTO movieRateDTO)
         {
-            var movieRateAdd =await _service.AddAsync(_mapper.Map<MovieRate>(movieRate));
-            var movieRateDTO = _mapper.Map<MovieRateDTO>(movieRateAdd);
+
+            var movieRateAdd =await _service.AddAsync(_mapper.Map<MovieRate>(movieRateDTO));
+            var movieRateDTO1 = _mapper.Map<MovieRateDTO>(movieRateAdd);
             return CreateActionResult(CustomResponseDTO<MovieRateDTO>.Success(201, movieRateDTO));
 
         }

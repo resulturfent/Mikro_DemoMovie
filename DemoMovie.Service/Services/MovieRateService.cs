@@ -24,6 +24,8 @@ namespace DemoMovie.Service.Services
             _movieRateRepository = movieRateRepository;
         }
 
+       
+
         public async Task<CustomResponseDTO<List<MovieWithRateDTO>>> GetMovieRateByIdAsync(int movieId, int userId)
         {
            var  movieInformation= await _movieRateRepository.GetMovieRateByIdAsync(movieId, userId);
@@ -33,11 +35,16 @@ namespace DemoMovie.Service.Services
             return CustomResponseDTO<List<MovieWithRateDTO>>.Success(200, movieWithRateDTO);
         }
 
-         async Task<List<MovieWithRateDTO>> IMovieRateService.GetAllAsync()
+         
+
+        async Task<List<MovieWithRateDTO>> IMovieRateService.GetAllAsync()
         {
             throw  new NotImplementedException();
         }
 
-        
+        Task<CustomResponseDTO<List<MovieWithRateDTO>>> IMovieRateService.GetMovieRateByIdAsync(int movieId, int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

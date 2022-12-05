@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace DemoMovie.Core.Services
 {
-    public interface IMovieRateService:IService<MovieRate>
+    public interface IMovieRateService : IService<MovieRate>
     {
-       public Task<List<MovieWithRateDTO>> GetAllAsync();
-      public  Task<CustomResponseDTO<List<MovieWithRateDTO>>> GetMovieRateByIdAsync(int movieId, int userId);
-    
+        public Task<List<MovieWithRateDTO>> GetAllAsync();
+        public Task<CustomResponseDTO<List<MovieWithRateDTO>>> GetMovieRateByIdAsync(int movieId, int userId);
+        //public CustomResponseDTO<List<MovieRate>> AddMovieRate(int score, int movieId, int userId, string comment);
+
     }
 }

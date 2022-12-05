@@ -20,7 +20,7 @@ namespace DemoMovie.API.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("GelAllMovie")]
         public async Task<IActionResult> GetAllMovie()
         {
             var getMovies=await _service.GetAllAsync();

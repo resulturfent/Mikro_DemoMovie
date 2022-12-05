@@ -15,6 +15,11 @@ namespace DemoMovie.Repository.Repositories
         {
         }
 
+        public List<MovieRate> AddMovieRate(string userName, int score, int movieId, int userId, string comment)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<MovieRate>> GetAllAsync()
         {
             return await _context.MovieRate.Include(k => k.Movies ).ToListAsync();

@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoMovie.Service", "DemoMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoMovie.API", "DemoMovie.API\DemoMovie.API.csproj", "{DB90F1BC-DA5A-49BF-A942-719DFE4B1FA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoMovie.Caching", "DemoMovie.Caching\DemoMovie.Caching.csproj", "{F4923090-1E5D-47EF-AF55-1C9FCC1EA6C5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoMovie.UnitTest", "DemoMovie.UnitTest\DemoMovie.UnitTest.csproj", "{5F2AEB0E-1895-4C44-9885-8C427FFB12D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDemo.GetMovieService", "MovieDemo.GetMovieService\MovieDemo.GetMovieService.csproj", "{40B67BAB-5DBC-4C9D-ABB1-6816B9038849}"
@@ -39,10 +37,6 @@ Global
 		{DB90F1BC-DA5A-49BF-A942-719DFE4B1FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB90F1BC-DA5A-49BF-A942-719DFE4B1FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB90F1BC-DA5A-49BF-A942-719DFE4B1FA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4923090-1E5D-47EF-AF55-1C9FCC1EA6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4923090-1E5D-47EF-AF55-1C9FCC1EA6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4923090-1E5D-47EF-AF55-1C9FCC1EA6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4923090-1E5D-47EF-AF55-1C9FCC1EA6C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F2AEB0E-1895-4C44-9885-8C427FFB12D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F2AEB0E-1895-4C44-9885-8C427FFB12D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2AEB0E-1895-4C44-9885-8C427FFB12D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
