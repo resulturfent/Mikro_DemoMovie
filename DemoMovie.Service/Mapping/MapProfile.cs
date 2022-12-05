@@ -10,7 +10,9 @@ namespace DemoMovie.Service.Mapping
         {
             CreateMap<MovieComment, CommentDTO>().ReverseMap();
             CreateMap<Movies, MovieDTO>().ReverseMap();
-            CreateMap<MovieScore, MovieScoreDTO>().ReverseMap();            
+            CreateMap<MovieScore, MovieScoreDTO>().ReverseMap();    
+            CreateMap<MovieRate, MovieRateDTO>().ReverseMap();
+            CreateMap<MovieRate, MovieWithRateDTO>().ReverseMap();
 
         }
     }

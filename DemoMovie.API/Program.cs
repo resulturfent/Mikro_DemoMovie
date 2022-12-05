@@ -28,6 +28,10 @@ builder.Services.AddScoped(typeof(IService<>),typeof(Service<>));
 
 builder.Services.AddAutoMapper(typeof(MapProfile));//Assembly olarak verildi
 
+builder.Services.AddScoped<IMovieRateRepository, MovieRateRepository>();
+builder.Services.AddScoped<IMovieRateService,MovieRateService>();
+
+
 #endregion
 
 #region RabbitMq entegrasyonu
