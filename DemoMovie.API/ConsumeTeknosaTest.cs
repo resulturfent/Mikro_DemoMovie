@@ -1,7 +1,7 @@
-﻿using MassTransit;
+﻿//using MassTransit;
 
-public class MikroDemoConsumer:IConsumer
-{
+//public class MikroDemoConsumer:IConsumer
+//{
 
 
-}
+//}

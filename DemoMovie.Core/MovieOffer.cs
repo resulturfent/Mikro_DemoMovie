@@ -12,5 +12,8 @@ namespace DemoMovie.Core
         public string ToMail { get; set; }
         public int MovieId { get; set; }
 
+        public Movies Movies { get; set; }
+        public User User { get; set; }
+
     }
 }

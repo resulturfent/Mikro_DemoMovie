@@ -16,8 +16,8 @@ namespace DemoMovie.Repository.Configurations
             builder.HasKey(k => k.Id);
             builder.Property(k => k.Id).UseIdentityColumn();
             builder.Property(k => k.ToMail).IsRequired();
-            builder.Property(k => k.UserId).IsRequired();
-            builder.Property(k => k.MovieId).IsRequired();
+            //builder.Property(k => k.UserId).IsRequired();
+            //builder.Property(k => k.MovieId).IsRequired();
         }
     }
 }
