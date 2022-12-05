@@ -26,15 +26,28 @@ namespace DemoMovie.API.Controllers
         [HttpGet("GetMovieRate")]
         public async Task<IActionResult> GetMovieRate(int movieId,int userId=1)
         {
-            //var getInformation =  _service.Where(k=>k.MoviesId==MovieId && k.UserId==1);
-
-            //var moviesRateDTO = _mapper.Map<List<MovieRateDTO>>(getInformation.ToList());
-
-            ////return Ok(CustomResponseDTO<List<MovieDTO>>.Success(200,movieDTO));
-            //return CreateActionResult(CustomResponseDTO<List<MovieRateDTO>>.Success(200, moviesRateDTO));
-
             return CreateActionResult(await _movieRateService.GetMovieRateByIdAsync(movieId, userId));
         }
+
+        [HttpPost()]
+        public async Task<IActionResult> AddMovieRate(MovieRate movieRate)
+        {
+            var movieRateAdd =await _service.AddAsync(_mapper.Map<MovieRate>(movieRate));
+            var movieRateDTO = _mapper.Map<MovieRateDTO>(movieRateAdd);
+            return CreateActionResult(CustomResponseDTO<MovieRateDTO>.Success(201, movieRateDTO));
+
+        }
+
+        [HttpPut()]
+        public async Task<IActionResult> UpdateMovieRate(MovieRate movieRate)
+        {
+             await _service.UpdateAsync(_mapper.Map<MovieRate>(movieRate));
+           
+            return CreateActionResult(CustomResponseDTO<NoContentDTO>.Success(204));
+
+        }
+
+
 
     }
 }
